@@ -1,0 +1,236 @@
+[
+  {
+    "id": "w1",
+    "type": "resource",
+    "subtype": "water",
+    "name": "Punto de agua potable - Plaza Constitución",
+    "description": "Distribución de agua embotellada y potable. Capacidad: 500 personas/día.",
+    "lat": -34.6271,
+    "lng": -58.3815
+  },
+  {
+    "id": "w2",
+    "type": "resource",
+    "subtype": "water",
+    "name": "Cisterna móvil - Parque Lezama",
+    "description": "Camión cisterna con agua potable. Horario: 8-18 hs.",
+    "lat": -34.6352,
+    "lng": -58.3698
+  },
+  {
+    "id": "w3",
+    "type": "resource",
+    "subtype": "water",
+    "name": "Punto de agua - Estación Once",
+    "description": "Distribución de agua embotellada organizada por vecinos.",
+    "lat": -34.6083,
+    "lng": -58.4092
+  },
+  {
+    "id": "f1",
+    "type": "resource",
+    "subtype": "food",
+    "name": "Comedor comunitario - La Boca",
+    "description": "Servicio de almuerzo y cena. Capacidad: 200 personas.",
+    "lat": -34.6389,
+    "lng": -58.3621
+  },
+  {
+    "id": "f2",
+    "type": "resource",
+    "subtype": "food",
+    "name": "Distribución de alimentos - Villa del Parque",
+    "description": "Cajas de alimentos secos. Trae documento de identidad.",
+    "lat": -34.5973,
+    "lng": -58.4784
+  },
+  {
+    "id": "f3",
+    "type": "resource",
+    "subtype": "food",
+    "name": "Olla popular - Palermo",
+    "description": "Comida caliente todas las tardes. Organizado por vecinos.",
+    "lat": -34.5833,
+    "lng": -58.4316
+  },
+  {
+    "id": "c1",
+    "type": "resource",
+    "subtype": "clothes",
+    "name": "Centro de ropa - Floresta",
+    "description": "Donaciones de ropa limpia. Se aceptan y entregan prendas.",
+    "lat": -34.6243,
+    "lng": -58.4856
+  },
+  {
+    "id": "c2",
+    "type": "resource",
+    "subtype": "clothes",
+    "name": "Ropero comunitario - Boedo",
+    "description": "Ropa para adultos y niños. Prioridad familias damnificadas.",
+    "lat": -34.6358,
+    "lng": -58.4245
+  },
+  {
+    "id": "m1",
+    "type": "resource",
+    "subtype": "medicine",
+    "name": "Farmacia solidaria - San Telmo",
+    "description": "Medicamentos básicos y primeros auxilios sin cargo.",
+    "lat": -34.6218,
+    "lng": -58.3741
+  },
+  {
+    "id": "m2",
+    "type": "resource",
+    "subtype": "medicine",
+    "name": "Puesto sanitario - Retiro",
+    "description": "Atención médica de urgencias y entrega de medicamentos esenciales.",
+    "lat": -34.5928,
+    "lng": -58.3741
+  },
+  {
+    "id": "b1",
+    "type": "resource",
+    "subtype": "battery",
+    "name": "Punto de carga - Microcentro",
+    "description": "Carga de celulares y dispositivos. Generadores disponibles 24 hs.",
+    "lat": -34.6071,
+    "lng": -58.3715
+  },
+  {
+    "id": "b2",
+    "type": "resource",
+    "subtype": "battery",
+    "name": "Carga energética - Caballito",
+    "description": "Paneles solares y baterías comunitarias. Prioridad para comunicaciones.",
+    "lat": -34.6189,
+    "lng": -58.4412
+  },
+  {
+    "id": "s1",
+    "type": "institution",
+    "subtype": "school",
+    "name": "Escuela Técnica N°3 - Centro de evacuación",
+    "description": "Edificio habilitado como refugio temporal. Capacidad: 150 personas.",
+    "lat": -34.6147,
+    "lng": -58.4018
+  },
+  {
+    "id": "s2",
+    "type": "institution",
+    "subtype": "school",
+    "name": "Escuela Primaria N°18 - Almagro",
+    "description": "Refugio y punto de coordinación vecinal. Agua y comida disponible.",
+    "lat": -34.6215,
+    "lng": -58.4179
+  },
+  {
+    "id": "h1",
+    "type": "institution",
+    "subtype": "hospital",
+    "name": "Hospital Ramos Mejía",
+    "description": "Guardia 24 hs. Atención de emergencias activa.",
+    "lat": -34.6317,
+    "lng": -58.3989
+  },
+  {
+    "id": "h2",
+    "type": "institution",
+    "subtype": "hospital",
+    "name": "Hospital de Clínicas",
+    "description": "Centro de salud universitario. Guardia operativa.",
+    "lat": -34.5991,
+    "lng": -58.3971
+  },
+  {
+    "id": "h3",
+    "type": "institution",
+    "subtype": "hospital",
+    "name": "Hospital Fernández",
+    "description": "Guardia de emergencias activa. Cirugía disponible.",
+    "lat": -34.5723,
+    "lng": -58.4105
+  },
+  {
+    "id": "sh1",
+    "type": "institution",
+    "subtype": "shelter",
+    "name": "Centro de evacuados - Palermo",
+    "description": "Refugio temporario organizado por el gobierno de la ciudad. Cupos disponibles.",
+    "lat": -34.5758,
+    "lng": -58.4335
+  },
+  {
+    "id": "sh2",
+    "type": "institution",
+    "subtype": "shelter",
+    "name": "Refugio Chacarita",
+    "description": "Centro comunitario habilitado. Colchones, frazadas y sanitarios.",
+    "lat": -34.5847,
+    "lng": -58.4556
+  },
+  {
+    "id": "fl1",
+    "type": "situation",
+    "subtype": "flood",
+    "name": "Inundación - Barracas",
+    "description": "Zona anegada. Nivel del agua: 50 cm. Evitar circulación vehicular.",
+    "lat": -34.6487,
+    "lng": -58.3912
+  },
+  {
+    "id": "fl2",
+    "type": "situation",
+    "subtype": "flood",
+    "name": "Inundación - Lugano",
+    "description": "Calles cortadas por desborde del arroyo Cildáñez. Cuidado peatonal.",
+    "lat": -34.6742,
+    "lng": -58.4712
+  },
+  {
+    "id": "fl3",
+    "type": "situation",
+    "subtype": "flood",
+    "name": "Anegamiento - Palermo Viejo",
+    "description": "Agua en calles bajas. Sótanos afectados. Riesgo eléctrico.",
+    "lat": -34.5931,
+    "lng": -58.4282
+  },
+  {
+    "id": "fi1",
+    "type": "situation",
+    "subtype": "fire",
+    "name": "Incendio estructural - Pompeya",
+    "description": "Edificio en llamas. Bomberos en el lugar. No acercarse.",
+    "lat": -34.6523,
+    "lng": -58.4175
+  },
+  {
+    "id": "fi2",
+    "type": "situation",
+    "subtype": "fire",
+    "name": "Incendio forestal - Costanera Sur",
+    "description": "Pastizales en combustión. Humo visible. Evitar la zona.",
+    "lat": -34.6201,
+    "lng": -58.3471
+  },
+  {
+    "id": "st1",
+    "type": "situation",
+    "subtype": "structural",
+    "name": "Edificio comprometido - Balvanera",
+    "description": "Riesgo de derrumbe parcial. Perímetro de seguridad establecido.",
+    "lat": -34.6141,
+    "lng": -58.4023
+  },
+  {
+    "id": "st2",
+    "type": "situation",
+    "subtype": "structural",
+    "name": "Daño estructural - San Cristóbal",
+    "description": "Fisuras en medianeras. Evaluación técnica pendiente. Desalojados 12 familias.",
+    "lat": -34.6298,
+    "lng": -58.3985
+  }
+]
