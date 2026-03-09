@@ -1,0 +1,49 @@
+{
+  "landing": {
+    "title": "Social Emergency Map",
+    "tagline": "Resources, institutions and risk situations in one place.",
+    "cta": "Enter the map →"
+  },
+  "sidebar": {
+    "filters": "Filters",
+    "changeColor": "Change color"
+  },
+  "category": {
+    "resource": "Resources",
+    "institution": "Institutions",
+    "situation": "People at Risk"
+  },
+  "subtype": {
+    "water": "Water",
+    "food": "Food",
+    "clothes": "Clothes",
+    "medicine": "Medicine",
+    "battery": "Energy / Charge",
+    "school": "Schools",
+    "hospital": "Hospitals",
+    "shelter": "Shelters",
+    "adults": "Adults",
+    "children": "Children"
+  },
+  "map": {
+    "clickToAdd": "Click on the map to add a marker",
+    "myLocation": "My location",
+    "yourLocation": "Your current location",
+    "geolocationUnavailable": "Geolocation not available",
+    "locationError": "Could not get your location"
+  },
+  "modal": {
+    "header": "Add to map",
+    "nameLabel": "Name / Reference",
+    "namePlaceholder": "E.g.: Community kitchen - Downtown",
+    "descriptionLabel": "Description",
+    "descriptionPlaceholder": "Describe the situation or available resource...",
+    "cancel": "Cancel",
+    "submit": "Add to map"
+  },
+  "markerType": {
+    "resource": "Resource",
+    "institution": "Institution",
+    "situation": "Person at risk"
+  }
+}

@@ -2,7 +2,7 @@ export type MarkerType = 'resource' | 'institution' | 'situation'
 
 export type ResourceSubtype = 'water' | 'food' | 'clothes' | 'medicine' | 'battery'
 export type InstitutionSubtype = 'school' | 'hospital' | 'shelter'
-export type SituationSubtype = 'flood' | 'fire' | 'structural'
+export type SituationSubtype = 'adults' | 'children'
 
 export type MarkerSubtype = ResourceSubtype | InstitutionSubtype | SituationSubtype
 

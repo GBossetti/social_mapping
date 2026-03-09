@@ -1,0 +1,49 @@
+{
+  "landing": {
+    "title": "Mapa de Emergencia Social",
+    "tagline": "Recursos, instituciones y situaciones de riesgo en un solo lugar.",
+    "cta": "Ingresar al mapa →"
+  },
+  "sidebar": {
+    "filters": "Filtros",
+    "changeColor": "Cambiar color"
+  },
+  "category": {
+    "resource": "Recursos",
+    "institution": "Instituciones",
+    "situation": "Personas en Riesgo"
+  },
+  "subtype": {
+    "water": "Agua",
+    "food": "Alimentos",
+    "clothes": "Ropa",
+    "medicine": "Medicamentos",
+    "battery": "Energía / Carga",
+    "school": "Escuelas",
+    "hospital": "Hospitales",
+    "shelter": "Refugios",
+    "adults": "Adultos",
+    "children": "Niños"
+  },
+  "map": {
+    "clickToAdd": "Hacé clic en el mapa para agregar",
+    "myLocation": "Mi ubicación",
+    "yourLocation": "Tu ubicación actual",
+    "geolocationUnavailable": "Geolocalización no disponible",
+    "locationError": "No se pudo obtener la ubicación"
+  },
+  "modal": {
+    "header": "Agregar al mapa",
+    "nameLabel": "Nombre / Referencia",
+    "namePlaceholder": "Ej: Comedor comunitario - Flores",
+    "descriptionLabel": "Descripción",
+    "descriptionPlaceholder": "Detallá la situación o recurso disponible...",
+    "cancel": "Cancelar",
+    "submit": "Agregar al mapa"
+  },
+  "markerType": {
+    "resource": "Recurso",
+    "institution": "Institución",
+    "situation": "Persona en riesgo"
+  }
+}

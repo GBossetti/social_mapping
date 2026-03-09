@@ -1,7 +1,14 @@
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 export default function Landing() {
   const navigate = useNavigate()
+  const { t, i18n } = useTranslation()
+
+  function switchLang(lang: string) {
+    i18n.changeLanguage(lang)
+    localStorage.setItem('lang', lang)
+  }
 
   return (
     <div
@@ -16,7 +23,6 @@ export default function Landing() {
         position: 'relative',
       }}
     >
-      {/* Grain texture overlay */}
       <div
         style={{
           position: 'fixed',
@@ -28,7 +34,6 @@ export default function Landing() {
       />
 
       <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        {/* Logo — triple size */}
         <div className="fade-up">
           <img
             src="/logo_home.png"
@@ -37,14 +42,12 @@ export default function Landing() {
           />
         </div>
 
-        {/* Title — Outfit sans on dark */}
         <h1
           className="fade-up-delay"
           style={{
             fontFamily: "'Outfit', sans-serif",
             fontSize: 26,
             fontWeight: 300,
-            fontStyle: 'normal',
             color: '#f0efec',
             letterSpacing: '0.04em',
             marginTop: 32,
@@ -52,21 +55,14 @@ export default function Landing() {
             lineHeight: 1.3,
           }}
         >
-          Mapa de Emergencia Social
+          {t('landing.title')}
         </h1>
 
-        {/* Hairline divider */}
         <div
           className="fade-up-delay"
-          style={{
-            width: 32,
-            height: 1,
-            background: 'rgba(255,255,255,0.1)',
-            marginTop: 20,
-          }}
+          style={{ width: 32, height: 1, background: 'rgba(255,255,255,0.1)', marginTop: 20 }}
         />
 
-        {/* Tagline */}
         <p
           className="fade-up-delay"
           style={{
@@ -80,10 +76,9 @@ export default function Landing() {
             lineHeight: 1.7,
           }}
         >
-          Recursos, instituciones y situaciones de riesgo en un solo lugar.
+          {t('landing.tagline')}
         </p>
 
-        {/* CTA */}
         <button
           className="fade-up-delay-2"
           onClick={() => navigate('/map')}
@@ -103,15 +98,36 @@ export default function Landing() {
             transition: 'border-color 0.25s ease, color 0.25s ease',
             outline: 'none',
           }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.borderBottomColor = '#7a9e87'
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.borderBottomColor = 'transparent'
-          }}
+          onMouseEnter={(e) => { e.currentTarget.style.borderBottomColor = '#7a9e87' }}
+          onMouseLeave={(e) => { e.currentTarget.style.borderBottomColor = 'transparent' }}
         >
-          Ingresar al mapa →
+          {t('landing.cta')}
         </button>
+
+        {/* Language switcher */}
+        <div className="fade-up-delay-2" style={{ display: 'flex', gap: 12, marginTop: 40 }}>
+          {['en', 'es'].map((lang) => (
+            <button
+              key={lang}
+              onClick={() => switchLang(lang)}
+              style={{
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                fontSize: 10,
+                fontFamily: "'Outfit', sans-serif",
+                fontWeight: i18n.language === lang ? 600 : 400,
+                color: i18n.language === lang ? '#f0efec' : '#4b4540',
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                padding: '4px 0',
+                transition: 'color 0.2s',
+              }}
+            >
+              {lang}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   )
