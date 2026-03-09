@@ -23,6 +23,7 @@ const CATEGORIES: Category[] = [
 const LANGUAGES = [
   { code: 'en', label: 'EN' },
   { code: 'es', label: 'ES' },
+  { code: 'ca', label: 'CA' },
 ]
 
 function ChevronIcon({ open }: { open: boolean }) {

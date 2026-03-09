@@ -1,0 +1,49 @@
+{
+  "landing": {
+    "title": "Mapa d'Emergència Social",
+    "tagline": "Recursos, institucions i situacions de risc en un sol lloc.",
+    "cta": "Accedir al mapa →"
+  },
+  "sidebar": {
+    "filters": "Filtres",
+    "changeColor": "Canviar color"
+  },
+  "category": {
+    "resource": "Recursos",
+    "institution": "Institucions",
+    "situation": "Persones en Risc"
+  },
+  "subtype": {
+    "water": "Aigua",
+    "food": "Aliments",
+    "clothes": "Roba",
+    "medicine": "Medicaments",
+    "battery": "Energia / Càrrega",
+    "school": "Escoles",
+    "hospital": "Hospitals",
+    "shelter": "Refugis",
+    "adults": "Adults",
+    "children": "Infants"
+  },
+  "map": {
+    "clickToAdd": "Fes clic al mapa per afegir un marcador",
+    "myLocation": "La meva ubicació",
+    "yourLocation": "La teva ubicació actual",
+    "geolocationUnavailable": "Geolocalització no disponible",
+    "locationError": "No s'ha pogut obtenir la ubicació"
+  },
+  "modal": {
+    "header": "Afegir al mapa",
+    "nameLabel": "Nom / Referència",
+    "namePlaceholder": "Ex.: Menjador comunitari - Centre",
+    "descriptionLabel": "Descripció",
+    "descriptionPlaceholder": "Descriu la situació o el recurs disponible...",
+    "cancel": "Cancel·lar",
+    "submit": "Afegir al mapa"
+  },
+  "markerType": {
+    "resource": "Recurs",
+    "institution": "Institució",
+    "situation": "Persona en risc"
+  }
+}

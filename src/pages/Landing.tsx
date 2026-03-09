@@ -106,7 +106,7 @@ export default function Landing() {
 
         {/* Language switcher */}
         <div className="fade-up-delay-2" style={{ display: 'flex', gap: 12, marginTop: 40 }}>
-          {['en', 'es'].map((lang) => (
+          {['en', 'es', 'ca'].map((lang) => (
             <button
               key={lang}
               onClick={() => switchLang(lang)}

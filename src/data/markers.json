@@ -3,225 +3,225 @@
     "id": "w1",
     "type": "resource",
     "subtype": "water",
-    "name": "Drinking water point - Plaza Constitución",
-    "description": "Distribution of bottled and drinking water. Capacity: 500 people/day.",
-    "lat": -34.6271,
-    "lng": -58.3815
+    "name": "Drinking water point - Barceloneta",
+    "description": "Bottled water distribution near the beach. Capacity: 400 people/day.",
+    "lat": 41.3791,
+    "lng": 2.1907
   },
   {
     "id": "w2",
     "type": "resource",
     "subtype": "water",
-    "name": "Mobile water tank - Parque Lezama",
-    "description": "Water truck with drinking water. Hours: 8am–6pm.",
-    "lat": -34.6352,
-    "lng": -58.3698
+    "name": "Mobile water tank - Gràcia",
+    "description": "Water truck at Plaça del Diamant. Hours: 8am–7pm.",
+    "lat": 41.4025,
+    "lng": 2.1533
   },
   {
     "id": "w3",
     "type": "resource",
     "subtype": "water",
-    "name": "Water point - Estación Once",
-    "description": "Bottled water distribution organized by neighbors.",
-    "lat": -34.6083,
-    "lng": -58.4092
+    "name": "Water distribution - L'Hospitalet",
+    "description": "Bottled water organized by neighbourhood volunteers. No ID required.",
+    "lat": 41.3663,
+    "lng": 2.1089
   },
   {
     "id": "f1",
     "type": "resource",
     "subtype": "food",
-    "name": "Community kitchen - La Boca",
-    "description": "Lunch and dinner service. Capacity: 200 people.",
-    "lat": -34.6389,
-    "lng": -58.3621
+    "name": "Community kitchen - El Raval",
+    "description": "Hot meals served at lunch and dinner. Capacity: 250 people.",
+    "lat": 41.3797,
+    "lng": 2.1665
   },
   {
     "id": "f2",
     "type": "resource",
     "subtype": "food",
-    "name": "Food distribution - Villa del Parque",
-    "description": "Dry food boxes available. Bring your ID.",
-    "lat": -34.5973,
-    "lng": -58.4784
+    "name": "Food distribution - Nou Barris",
+    "description": "Dry food boxes available every morning. Bring your ID.",
+    "lat": 41.4336,
+    "lng": 2.1782
   },
   {
     "id": "f3",
     "type": "resource",
     "subtype": "food",
-    "name": "Community pot - Palermo",
-    "description": "Hot food every afternoon. Organized by neighbors.",
-    "lat": -34.5833,
-    "lng": -58.4316
+    "name": "Community pot - Sants",
+    "description": "Hot food every evening at Plaça de Sants. Organized by neighbours.",
+    "lat": 41.3731,
+    "lng": 2.1355
   },
   {
     "id": "c1",
     "type": "resource",
     "subtype": "clothes",
-    "name": "Clothing center - Floresta",
-    "description": "Clean clothing donations. Items accepted and distributed.",
-    "lat": -34.6243,
-    "lng": -58.4856
+    "name": "Clothing centre - Poble Sec",
+    "description": "Clean clothing donations accepted and distributed. All sizes available.",
+    "lat": 41.3710,
+    "lng": 2.1588
   },
   {
     "id": "c2",
     "type": "resource",
     "subtype": "clothes",
-    "name": "Community wardrobe - Boedo",
+    "name": "Community wardrobe - Sant Andreu",
     "description": "Clothes for adults and children. Priority for affected families.",
-    "lat": -34.6358,
-    "lng": -58.4245
+    "lat": 41.4319,
+    "lng": 2.1906
   },
   {
     "id": "m1",
     "type": "resource",
     "subtype": "medicine",
-    "name": "Solidarity pharmacy - San Telmo",
-    "description": "Basic medicine and first aid at no cost.",
-    "lat": -34.6218,
-    "lng": -58.3741
+    "name": "Solidarity pharmacy - Eixample",
+    "description": "Basic medicine and first aid at no cost. Open 9am–9pm.",
+    "lat": 41.3893,
+    "lng": 2.1620
   },
   {
     "id": "m2",
     "type": "resource",
     "subtype": "medicine",
-    "name": "Health post - Retiro",
+    "name": "Health post - Poblenou",
     "description": "Emergency medical care and essential medicine distribution.",
-    "lat": -34.5928,
-    "lng": -58.3741
+    "lat": 41.3997,
+    "lng": 2.1993
   },
   {
     "id": "b1",
     "type": "resource",
     "subtype": "battery",
-    "name": "Charging point - Microcentro",
+    "name": "Charging point - Passeig de Gràcia",
     "description": "Phone and device charging. Generators available 24 hrs.",
-    "lat": -34.6071,
-    "lng": -58.3715
+    "lat": 41.3916,
+    "lng": 2.1650
   },
   {
     "id": "b2",
     "type": "resource",
     "subtype": "battery",
-    "name": "Energy station - Caballito",
-    "description": "Solar panels and community batteries. Priority for communications.",
-    "lat": -34.6189,
-    "lng": -58.4412
+    "name": "Energy station - Sarrià",
+    "description": "Solar panels and community batteries. Priority for emergency communications.",
+    "lat": 41.4024,
+    "lng": 2.1194
   },
   {
     "id": "s1",
     "type": "institution",
     "subtype": "school",
-    "name": "Technical School N°3 - Evacuation center",
-    "description": "Building enabled as temporary shelter. Capacity: 150 people.",
-    "lat": -34.6147,
-    "lng": -58.4018
+    "name": "Escola Pompeu Fabra - Evacuation centre",
+    "description": "Building enabled as temporary shelter. Capacity: 200 people.",
+    "lat": 41.3854,
+    "lng": 2.1312
   },
   {
     "id": "s2",
     "type": "institution",
     "subtype": "school",
-    "name": "Primary School N°18 - Almagro",
-    "description": "Shelter and neighborhood coordination point. Water and food available.",
-    "lat": -34.6215,
-    "lng": -58.4179
+    "name": "Institut Milà i Fontanals - Shelter",
+    "description": "Coordination point and refuge. Water and food available on site.",
+    "lat": 41.3840,
+    "lng": 2.1690
   },
   {
     "id": "h1",
     "type": "institution",
     "subtype": "hospital",
-    "name": "Hospital Ramos Mejía",
-    "description": "24-hour emergency room. Active emergency care.",
-    "lat": -34.6317,
-    "lng": -58.3989
+    "name": "Hospital Clínic de Barcelona",
+    "description": "24-hour emergency room. Full emergency services active.",
+    "lat": 41.3887,
+    "lng": 2.1509
   },
   {
     "id": "h2",
     "type": "institution",
     "subtype": "hospital",
-    "name": "Hospital de Clínicas",
-    "description": "University health center. Emergency room operational.",
-    "lat": -34.5991,
-    "lng": -58.3971
+    "name": "Hospital de la Vall d'Hebron",
+    "description": "Major trauma and emergency centre. Fully operational.",
+    "lat": 41.4272,
+    "lng": 2.1492
   },
   {
     "id": "h3",
     "type": "institution",
     "subtype": "hospital",
-    "name": "Hospital Fernández",
-    "description": "Active emergency room. Surgery available.",
-    "lat": -34.5723,
-    "lng": -58.4105
+    "name": "Hospital del Mar",
+    "description": "Coastal emergency hospital. Active emergency room and surgery.",
+    "lat": 41.3837,
+    "lng": 2.1966
   },
   {
     "id": "sh1",
     "type": "institution",
     "subtype": "shelter",
-    "name": "Evacuation center - Palermo",
-    "description": "Temporary shelter managed by city government. Spaces available.",
-    "lat": -34.5758,
-    "lng": -58.4335
+    "name": "Evacuation centre - Palau Sant Jordi",
+    "description": "Large temporary shelter managed by Generalitat. Spaces available.",
+    "lat": 41.3640,
+    "lng": 2.1527
   },
   {
     "id": "sh2",
     "type": "institution",
     "subtype": "shelter",
-    "name": "Shelter Chacarita",
-    "description": "Enabled community center. Mattresses, blankets and bathrooms.",
-    "lat": -34.5847,
-    "lng": -58.4556
+    "name": "Temporary refuge - Parc de la Ciutadella",
+    "description": "Open-air and indoor refuge. Blankets, food and sanitation available.",
+    "lat": 41.3858,
+    "lng": 2.1861
   },
   {
     "id": "p1",
     "type": "situation",
     "subtype": "adults",
-    "name": "Adults without assistance - Barracas",
-    "description": "Group of adults with no access to water or food. Urgent attention needed.",
-    "lat": -34.6487,
-    "lng": -58.3912
+    "name": "Adults without assistance - Barceloneta",
+    "description": "Group of elderly residents isolated without water or food. Urgent attention needed.",
+    "lat": 41.3780,
+    "lng": 2.1920
   },
   {
     "id": "p2",
     "type": "situation",
     "subtype": "adults",
-    "name": "Stranded people - Lugano",
-    "description": "Isolated adults with no resources. Volunteers and supplies needed.",
-    "lat": -34.6742,
-    "lng": -58.4712
+    "name": "Isolated elderly - Gràcia",
+    "description": "Three elderly people alone on the top floor, no medication. High priority.",
+    "lat": 41.4050,
+    "lng": 2.1550
   },
   {
     "id": "p3",
     "type": "situation",
     "subtype": "adults",
-    "name": "Elderly adults - Palermo",
-    "description": "Three elderly adults alone, without medication. High priority.",
-    "lat": -34.5931,
-    "lng": -58.4282
+    "name": "Vulnerable adults - Sant Martí",
+    "description": "Adults with reduced mobility stranded on upper floors. Evacuation support needed.",
+    "lat": 41.4073,
+    "lng": 2.2051
   },
   {
     "id": "p4",
     "type": "situation",
     "subtype": "children",
-    "name": "Unaccompanied children - Pompeya",
-    "description": "Four children under 10 without a responsible adult. Support needed.",
-    "lat": -34.6523,
-    "lng": -58.4175
+    "name": "Unaccompanied children - El Raval",
+    "description": "Five children under 12 without a responsible adult. Immediate support needed.",
+    "lat": 41.3810,
+    "lng": 2.1640
   },
   {
     "id": "p5",
     "type": "situation",
     "subtype": "children",
-    "name": "Separated children - Costanera Sur",
+    "name": "Separated children - Nou Barris",
     "description": "Children separated from families during evacuation. Awaiting assistance.",
-    "lat": -34.6201,
-    "lng": -58.3471
+    "lat": 41.4350,
+    "lng": 2.1760
   },
   {
     "id": "p6",
     "type": "situation",
     "subtype": "children",
-    "name": "Families with children - Balvanera",
+    "name": "Families with children - Sants",
     "description": "Families with young children without food or water. Immediate help required.",
-    "lat": -34.6141,
-    "lng": -58.4023
+    "lat": 41.3745,
+    "lng": 2.1340
   }
 ]

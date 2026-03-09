@@ -110,7 +110,7 @@ export default function MapView({ markers, colors, onMapClick }: MapViewProps) {
   return (
     <div style={{ width: '100%', height: '100%', position: 'relative' }}>
       <MapContainer
-        center={[-34.6118, -58.4173]}
+        center={[41.3851, 2.1734]}
         zoom={12}
         style={{ width: '100%', height: '100%', cursor: 'crosshair' }}
       >
