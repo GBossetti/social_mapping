@@ -1,23 +1,26 @@
 import { useState, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import type { FilterState, MarkerSubtype, MarkerType } from '../types'
+import type { FilterState, MapMarker, MarkerSubtype, MarkerType } from '../types'
 
 interface FilterSidebarProps {
   filters: FilterState
   onChange: (subtype: MarkerSubtype, value: boolean) => void
   colors: Record<MarkerType, string>
   onColorChange: (type: MarkerType, color: string) => void
+  markers: MapMarker[]
+  onMarkerFocus: (marker: MapMarker) => void
 }
 
 interface Category {
   type: MarkerType
   items: MarkerSubtype[]
+  expandable?: boolean
 }
 
 const CATEGORIES: Category[] = [
   { type: 'resource', items: ['water', 'food', 'clothes', 'medicine', 'battery'] },
-  { type: 'institution', items: ['school', 'hospital', 'shelter'] },
-  { type: 'situation', items: ['adults', 'children'] },
+  { type: 'institution', items: ['school', 'hospital', 'shelter'], expandable: true },
+  { type: 'situation', items: ['adults', 'children'], expandable: true },
 ]
 
 const LANGUAGES = [
@@ -37,13 +40,15 @@ function ChevronIcon({ open }: { open: boolean }) {
 }
 
 function CategorySection({
-  category, filters, onChange, color, onColorChange,
+  category, filters, onChange, color, onColorChange, markers, onMarkerClick,
 }: {
   category: Category
   filters: FilterState
   onChange: (subtype: MarkerSubtype, value: boolean) => void
   color: string
   onColorChange: (type: MarkerType, color: string) => void
+  markers: MapMarker[]
+  onMarkerClick: (marker: MapMarker) => void
 }) {
   const { t } = useTranslation()
   const [open, setOpen] = useState(true)
@@ -91,7 +96,14 @@ function CategorySection({
 
       <div style={{ maxHeight: open ? 300 : 0, overflow: 'hidden', transition: 'max-height 0.25s ease' }}>
         {category.items.map((subtype) => (
-          <SubItem key={subtype} subtype={subtype} checked={filters[subtype]} onChange={(v) => onChange(subtype, v)} />
+          <SubItem
+            key={subtype}
+            subtype={subtype}
+            checked={filters[subtype]}
+            onChange={(v) => onChange(subtype, v)}
+            subtypeMarkers={category.expandable ? markers.filter((m) => m.subtype === subtype) : undefined}
+            onMarkerClick={onMarkerClick}
+          />
         ))}
       </div>
 
@@ -100,25 +112,59 @@ function CategorySection({
   )
 }
 
-function SubItem({ subtype, checked, onChange }: { subtype: MarkerSubtype; checked: boolean; onChange: (v: boolean) => void }) {
+function SubItem({ subtype, checked, onChange, subtypeMarkers, onMarkerClick }: {
+  subtype: MarkerSubtype
+  checked: boolean
+  onChange: (v: boolean) => void
+  subtypeMarkers?: MapMarker[]
+  onMarkerClick: (marker: MapMarker) => void
+}) {
   const { t } = useTranslation()
   const [hovered, setHovered] = useState(false)
+  const [open, setOpen] = useState(false)
+  const hasMarkers = subtypeMarkers && subtypeMarkers.length > 0
+
   return (
-    <label
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{ display: 'flex', alignItems: 'center', gap: 9, padding: '5px 16px 5px 36px', cursor: 'pointer', background: hovered ? 'rgba(0,0,0,0.025)' : 'transparent', transition: 'background 0.12s' }}
-    >
-      <input type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)}
-        style={{ width: 12, height: 12, flexShrink: 0, accentColor: 'white' }} />
-      <span style={{ fontSize: 12, fontWeight: 300, color: '#6b6560', letterSpacing: '0.01em' }}>
-        {t(`subtype.${subtype}`)}
-      </span>
-    </label>
+    <div>
+      <div
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        style={{ display: 'flex', alignItems: 'center', gap: 9, padding: '5px 16px 5px 36px', background: hovered ? 'rgba(0,0,0,0.025)' : 'transparent', transition: 'background 0.12s' }}
+      >
+        <input type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)}
+          style={{ width: 12, height: 12, flexShrink: 0, accentColor: 'white', cursor: 'pointer' }} />
+        <span
+          style={{ fontSize: 12, fontWeight: 300, color: '#6b6560', letterSpacing: '0.01em', flex: 1, cursor: hasMarkers ? 'pointer' : 'default' }}
+          onClick={hasMarkers ? () => setOpen((o) => !o) : undefined}
+        >
+          {t(`subtype.${subtype}`)}
+        </span>
+        {hasMarkers && (
+          <button onClick={() => setOpen((o) => !o)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '2px 4px', display: 'flex', alignItems: 'center' }}>
+            <ChevronIcon open={open} />
+          </button>
+        )}
+      </div>
+      {hasMarkers && (
+        <div style={{ maxHeight: open ? 500 : 0, overflow: 'hidden', transition: 'max-height 0.25s ease' }}>
+          {subtypeMarkers.map((marker) => (
+            <div
+              key={marker.id}
+              onClick={() => onMarkerClick(marker)}
+              style={{ padding: '3px 16px 3px 52px', fontSize: 11, color: '#9a9288', fontWeight: 300, lineHeight: 1.4, cursor: 'pointer', transition: 'color 0.12s' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#2d2a26')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#9a9288')}
+            >
+              {marker.name}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
   )
 }
 
-export default function FilterSidebar({ filters, onChange, colors, onColorChange }: FilterSidebarProps) {
+export default function FilterSidebar({ filters, onChange, colors, onColorChange, markers, onMarkerFocus }: FilterSidebarProps) {
   const { t, i18n } = useTranslation()
   const [listOpen, setListOpen] = useState(true)
 
@@ -153,6 +199,8 @@ export default function FilterSidebar({ filters, onChange, colors, onColorChange
               onChange={onChange}
               color={colors[cat.type]}
               onColorChange={onColorChange}
+              markers={markers}
+              onMarkerClick={onMarkerFocus}
             />
           ))}
         </div>
@@ -182,6 +230,7 @@ export default function FilterSidebar({ filters, onChange, colors, onColorChange
           </button>
         ))}
       </div>
+
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { MapContainer, TileLayer, Marker, Popup, Circle, useMapEvents, useMap } from 'react-leaflet'
 import L from 'leaflet'
@@ -37,6 +37,7 @@ interface MapViewProps {
   markers: MapMarker[]
   colors: Record<MarkerType, string>
   onMapClick: (lat: number, lng: number) => void
+  focusedMarker: MapMarker | null
 }
 
 /** Guards against firing onMapClick right after a popup closes */
@@ -66,12 +67,26 @@ function FlyToHandler({ location }: { location: { lat: number; lng: number } | n
   return null
 }
 
-export default function MapView({ markers, colors, onMapClick }: MapViewProps) {
+/** Flies to a focused marker and opens its popup */
+function FocusMarkerHandler({ marker, markerRefs }: { marker: MapMarker | null; markerRefs: React.MutableRefObject<Record<string, L.Marker | null>> }) {
+  const map = useMap()
+  useEffect(() => {
+    if (!marker) return
+    map.flyTo([marker.lat, marker.lng], 16, { duration: 1.2 })
+    setTimeout(() => {
+      markerRefs.current[marker.id]?.openPopup()
+    }, 1300)
+  }, [marker])
+  return null
+}
+
+export default function MapView({ markers, colors, onMapClick, focusedMarker }: MapViewProps) {
   const { t } = useTranslation()
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number; accuracy: number } | null>(null)
   const [locating, setLocating] = useState(false)
   const [locateError, setLocateError] = useState<string | null>(null)
   const watchIdRef = useRef<number | null>(null)
+  const markerRefs = useRef<Record<string, L.Marker | null>>({})
 
   useEffect(() => {
     return () => {
@@ -120,6 +135,7 @@ export default function MapView({ markers, colors, onMapClick }: MapViewProps) {
         />
         <MapClickHandler onMapClick={onMapClick} />
         <FlyToHandler location={userLocation} />
+        <FocusMarkerHandler marker={focusedMarker} markerRefs={markerRefs} />
 
         {/* User location marker + accuracy circle */}
         {userLocation && (
@@ -144,7 +160,8 @@ export default function MapView({ markers, colors, onMapClick }: MapViewProps) {
 
         {/* Data markers */}
         {markers.map((m) => (
-          <Marker key={m.id} position={[m.lat, m.lng]} icon={createCircleIcon(m.type, colors)}>
+          <Marker key={m.id} position={[m.lat, m.lng]} icon={createCircleIcon(m.type, colors)}
+            ref={(ref) => { markerRefs.current[m.id] = ref }}>
             <Popup>
               <div style={{ fontFamily: "'Outfit', sans-serif", minWidth: 170, maxWidth: 230 }}>
                 <div style={{ fontSize: 9, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.1em', color: colors[m.type], marginBottom: 5 }}>

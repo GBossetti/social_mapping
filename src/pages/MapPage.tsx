@@ -28,6 +28,7 @@ export default function MapPage() {
   const [markerColors, setMarkerColors] = useState<Record<MarkerType, string>>(DEFAULT_COLORS)
   const [userMarkers, setUserMarkers] = useState<MapMarker[]>([])
   const [pendingLatLng, setPendingLatLng] = useState<{ lat: number; lng: number } | null>(null)
+  const [focusedMarker, setFocusedMarker] = useState<MapMarker | null>(null)
 
   function handleChange(subtype: MarkerSubtype, value: boolean) {
     setFilters((prev) => ({ ...prev, [subtype]: value }))
@@ -66,6 +67,8 @@ export default function MapPage() {
         onChange={handleChange}
         colors={markerColors}
         onColorChange={handleColorChange}
+        markers={allMarkers}
+        onMarkerFocus={(m) => setFocusedMarker(m)}
       />
 
       <div style={{ flex: 1, position: 'relative' }}>
@@ -73,6 +76,7 @@ export default function MapPage() {
           markers={visibleMarkers}
           colors={markerColors}
           onMapClick={handleMapClick}
+          focusedMarker={focusedMarker}
         />
 
         {pendingLatLng && (
