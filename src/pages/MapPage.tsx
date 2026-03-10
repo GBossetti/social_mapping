@@ -62,7 +62,14 @@ export default function MapPage() {
   const visibleMarkers = allMarkers.filter((m) => filters[m.subtype])
 
   return (
-    <div style={{ width: '100vw', height: '100vh', display: 'flex', overflow: 'hidden' }}>
+    <div style={{ width: '100vw', height: '100vh', position: 'relative', overflow: 'hidden' }}>
+      <MapView
+        markers={visibleMarkers}
+        colors={markerColors}
+        onMapClick={handleMapClick}
+        focusedMarker={focusedMarker}
+      />
+
       <FilterSidebar
         filters={filters}
         onChange={handleChange}
@@ -71,25 +78,51 @@ export default function MapPage() {
         markers={allMarkers}
         onMarkerFocus={(m) => setFocusedMarker(m)}
         isOpen={sidebarOpen}
-        onToggle={() => setSidebarOpen(o => !o)}
+        onClose={() => setSidebarOpen(false)}
       />
 
-      <div style={{ flex: 1, position: 'relative' }}>
-        <MapView
-          markers={visibleMarkers}
-          colors={markerColors}
-          onMapClick={handleMapClick}
-          focusedMarker={focusedMarker}
-        />
-
-        {pendingLatLng && (
-          <AddMarkerModal
-            colors={markerColors}
-            onConfirm={handleModalConfirm}
-            onCancel={() => setPendingLatLng(null)}
-          />
+      {/* FAB toggle button */}
+      <button
+        onClick={() => setSidebarOpen(o => !o)}
+        title={sidebarOpen ? '×' : 'Open filters'}
+        style={{
+          position: 'absolute',
+          top: 80,
+          left: 10,
+          zIndex: 1001,
+          width: 36,
+          height: 36,
+          background: '#f8f6f2',
+          border: '1px solid rgba(0,0,0,0.1)',
+          boxShadow: '0 1px 4px rgba(0,0,0,0.15)',
+          borderRadius: 8,
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: 0,
+        }}
+      >
+        {sidebarOpen ? (
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 2l10 10M12 2L2 12" stroke="#555" strokeWidth="1.5" strokeLinecap="round" />
+          </svg>
+        ) : (
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M1 3h14M1 8h9M1 13h6" stroke="#555" strokeWidth="1.5" strokeLinecap="round" />
+            <circle cx="13" cy="8" r="2" stroke="#555" strokeWidth="1.5" />
+            <circle cx="9" cy="13" r="2" stroke="#555" strokeWidth="1.5" />
+          </svg>
         )}
-      </div>
+      </button>
+
+      {pendingLatLng && (
+        <AddMarkerModal
+          colors={markerColors}
+          onConfirm={handleModalConfirm}
+          onCancel={() => setPendingLatLng(null)}
+        />
+      )}
     </div>
   )
 }

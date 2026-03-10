@@ -10,7 +10,7 @@ interface FilterSidebarProps {
   markers: MapMarker[]
   onMarkerFocus: (marker: MapMarker) => void
   isOpen: boolean
-  onToggle: () => void
+  onClose: () => void
 }
 
 interface Category {
@@ -160,29 +160,65 @@ function SubItem({ subtype, checked, onChange, subtypeMarkers, onMarkerClick }: 
   )
 }
 
-export default function FilterSidebar({ filters, onChange, colors, onColorChange, markers, onMarkerFocus, isOpen, onToggle }: FilterSidebarProps) {
+export default function FilterSidebar({ filters, onChange, colors, onColorChange, markers, onMarkerFocus, isOpen, onClose }: FilterSidebarProps) {
   const { t } = useTranslation()
 
   return (
-    <div style={{ width: isOpen ? 220 : 36, height: '100%', background: '#efece6', borderRight: '1px solid rgba(0,0,0,0.07)', display: 'flex', flexDirection: 'column', overflow: 'hidden', zIndex: 1000, flexShrink: 0, transition: 'width 0.25s ease', position: 'relative' }}>
+    <>
+      {/* Backdrop */}
+      <div
+        onClick={onClose}
+        style={{
+          display: isOpen ? 'block' : 'none',
+          position: 'absolute',
+          inset: 0,
+          background: 'rgba(0,0,0,0.25)',
+          zIndex: 999,
+        }}
+      />
 
-      {/* Toggle button */}
-      <button
-        onClick={onToggle}
-        title={isOpen ? t('sidebar.collapse') : t('sidebar.expand')}
-        style={{ position: 'absolute', top: 22, right: isOpen ? 12 : '50%', transform: isOpen ? 'none' : 'translateX(50%)', background: 'none', border: 'none', cursor: 'pointer', padding: 4, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1, transition: 'right 0.25s ease, transform 0.25s ease' }}
-      >
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ transform: isOpen ? 'rotate(0deg)' : 'rotate(180deg)', transition: 'transform 0.25s ease' }}>
-          <path d="M9 2L4 7l5 5" stroke="#a09990" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </button>
-
-      {/* Inner content — fades out when collapsed */}
-      <div style={{ opacity: isOpen ? 1 : 0, transition: 'opacity 0.2s ease', display: 'flex', flexDirection: 'column', flex: 1, overflow: 'hidden', pointerEvents: isOpen ? 'auto' : 'none' }}>
+      {/* Drawer panel */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        height: '100%',
+        width: 240,
+        background: '#efece6',
+        borderRight: '1px solid rgba(0,0,0,0.07)',
+        zIndex: 1000,
+        transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
+        transition: 'transform 0.25s ease',
+        display: 'flex',
+        flexDirection: 'column',
+        overflow: 'hidden',
+      }}>
+        {/* × close button */}
+        <button
+          onClick={onClose}
+          title={t('sidebar.close')}
+          style={{
+            position: 'absolute',
+            top: 14,
+            right: 14,
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            padding: 4,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1,
+          }}
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 2l10 10M12 2L2 12" stroke="#a09990" strokeWidth="1.5" strokeLinecap="round" />
+          </svg>
+        </button>
 
         {/* Category filters */}
-        <div style={{ flex: 1, overflow: 'hidden' }}>
-          <div style={{ paddingTop: 10, paddingBottom: 20 }}>
+        <div style={{ flex: 1, overflowY: 'auto', paddingTop: 44 }}>
+          <div style={{ paddingBottom: 20 }}>
             {CATEGORIES.map((cat) => (
               <CategorySection
                 key={cat.type}
@@ -197,8 +233,7 @@ export default function FilterSidebar({ filters, onChange, colors, onColorChange
             ))}
           </div>
         </div>
-
       </div>
-    </div>
+    </>
   )
 }

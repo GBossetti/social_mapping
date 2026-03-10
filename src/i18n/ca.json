@@ -5,7 +5,8 @@
     "cta": "Accedir al mapa →"
   },
   "sidebar": {
-    "filters": "Filtres",
+    "openFilters": "Obrir filtres",
+    "close": "Tancar",
     "changeColor": "Canviar color"
   },
   "category": {
