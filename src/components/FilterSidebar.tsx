@@ -25,12 +25,6 @@ const CATEGORIES: Category[] = [
   { type: 'situation', items: ['adults', 'children'], expandable: true },
 ]
 
-const LANGUAGES = [
-  { code: 'en', label: 'EN' },
-  { code: 'es', label: 'ES' },
-  { code: 'ca', label: 'CA' },
-]
-
 function ChevronIcon({ open }: { open: boolean }) {
   return (
     <svg width="11" height="11" viewBox="0 0 12 12" fill="none"
@@ -167,13 +161,7 @@ function SubItem({ subtype, checked, onChange, subtypeMarkers, onMarkerClick }: 
 }
 
 export default function FilterSidebar({ filters, onChange, colors, onColorChange, markers, onMarkerFocus, isOpen, onToggle }: FilterSidebarProps) {
-  const { t, i18n } = useTranslation()
-  const [listOpen, setListOpen] = useState(true)
-
-  function switchLang(lang: string) {
-    i18n.changeLanguage(lang)
-    localStorage.setItem('lang', lang)
-  }
+  const { t } = useTranslation()
 
   return (
     <div style={{ width: isOpen ? 220 : 36, height: '100%', background: '#efece6', borderRight: '1px solid rgba(0,0,0,0.07)', display: 'flex', flexDirection: 'column', overflow: 'hidden', zIndex: 1000, flexShrink: 0, transition: 'width 0.25s ease', position: 'relative' }}>
@@ -192,20 +180,8 @@ export default function FilterSidebar({ filters, onChange, colors, onColorChange
       {/* Inner content — fades out when collapsed */}
       <div style={{ opacity: isOpen ? 1 : 0, transition: 'opacity 0.2s ease', display: 'flex', flexDirection: 'column', flex: 1, overflow: 'hidden', pointerEvents: isOpen ? 'auto' : 'none' }}>
 
-        {/* Header */}
-        <div style={{ padding: '22px 16px 16px', borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
-          <button onClick={() => setListOpen((o) => !o)}
-            style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, width: '100%', paddingRight: 20 }}
-          >
-            <p style={{ fontSize: 9, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.14em', color: '#a09990', flex: 1, textAlign: 'left' }}>
-              {t('sidebar.filters')}
-            </p>
-            <ChevronIcon open={listOpen} />
-          </button>
-        </div>
-
         {/* Category filters */}
-        <div style={{ flex: 1, maxHeight: listOpen ? '100%' : 0, transition: 'max-height 0.25s ease', overflow: 'hidden' }}>
+        <div style={{ flex: 1, overflow: 'hidden' }}>
           <div style={{ paddingTop: 10, paddingBottom: 20 }}>
             {CATEGORIES.map((cat) => (
               <CategorySection
@@ -220,31 +196,6 @@ export default function FilterSidebar({ filters, onChange, colors, onColorChange
               />
             ))}
           </div>
-        </div>
-
-        {/* Language switcher */}
-        <div style={{ padding: '12px 16px', borderTop: '1px solid rgba(0,0,0,0.06)', display: 'flex', gap: 10, justifyContent: 'center' }}>
-          {LANGUAGES.map((lang) => (
-            <button
-              key={lang.code}
-              onClick={() => switchLang(lang.code)}
-              style={{
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                fontSize: 10,
-                fontFamily: "'Outfit', sans-serif",
-                fontWeight: i18n.language === lang.code ? 600 : 400,
-                color: i18n.language === lang.code ? '#2d2a26' : '#a09990',
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                padding: '2px 4px',
-                transition: 'color 0.15s',
-              }}
-            >
-              {lang.label}
-            </button>
-          ))}
         </div>
 
       </div>

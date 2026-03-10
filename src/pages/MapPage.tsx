@@ -29,7 +29,7 @@ export default function MapPage() {
   const [userMarkers, setUserMarkers] = useState<MapMarker[]>([])
   const [pendingLatLng, setPendingLatLng] = useState<{ lat: number; lng: number } | null>(null)
   const [focusedMarker, setFocusedMarker] = useState<MapMarker | null>(null)
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   function handleChange(subtype: MarkerSubtype, value: boolean) {
     setFilters((prev) => ({ ...prev, [subtype]: value }))
