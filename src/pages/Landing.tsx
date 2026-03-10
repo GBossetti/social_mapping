@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import logoUrl from '/logo_home.png'
 
 export default function Landing() {
   const navigate = useNavigate()
@@ -37,7 +36,7 @@ export default function Landing() {
       <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <div className="fade-up">
           <img
-            src={logoUrl}
+            src={`${import.meta.env.BASE_URL}logo_home.png`}
             alt="Social Emergency Map"
             style={{ width: 216, height: 'auto', display: 'block', opacity: 0.92 }}
           />
