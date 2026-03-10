@@ -25,7 +25,7 @@ export default function AddMarkerModal({ colors, onConfirm, onCancel }: AddMarke
 
   function handleTypeChange(t: MarkerType) {
     setType(t)
-    setSubtype(SUBTYPES[t][0].value)
+    setSubtype(SUBTYPES[t][0])
   }
 
   function handleSubmit(e: React.FormEvent) {
