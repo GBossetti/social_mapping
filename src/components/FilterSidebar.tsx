@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { FilterState, MapMarker, MarkerSubtype, MarkerType } from '../types'
 
@@ -25,6 +25,25 @@ const CATEGORIES: Category[] = [
   { type: 'situation', items: ['adults', 'children'], expandable: true },
 ]
 
+function Checkbox({ checked, indeterminate, onChange }: { checked: boolean; indeterminate?: boolean; onChange: () => void }) {
+  return (
+    <div
+      onClick={onChange}
+      style={{
+        width: 12, height: 12, flexShrink: 0, cursor: 'pointer',
+        background: 'white', border: '1px solid rgba(0,0,0,0.25)', borderRadius: 2,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+      }}
+    >
+      {indeterminate ? (
+        <svg width="8" height="8" viewBox="0 0 8 8"><line x1="1" y1="4" x2="7" y2="4" stroke="#2d2a26" strokeWidth="1.5" strokeLinecap="round" /></svg>
+      ) : checked ? (
+        <svg width="8" height="8" viewBox="0 0 8 8"><polyline points="1,4 3,6 7,2" stroke="#2d2a26" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" /></svg>
+      ) : null}
+    </div>
+  )
+}
+
 function ChevronIcon({ open }: { open: boolean }) {
   return (
     <svg width="11" height="11" viewBox="0 0 12 12" fill="none"
@@ -48,16 +67,9 @@ function CategorySection({
 }) {
   const { t } = useTranslation()
   const [open, setOpen] = useState(true)
-  const checkboxRef = useRef<HTMLInputElement>(null)
 
   const allChecked = category.items.every((s) => filters[s])
   const someChecked = category.items.some((s) => filters[s])
-
-  useEffect(() => {
-    if (checkboxRef.current) {
-      checkboxRef.current.indeterminate = someChecked && !allChecked
-    }
-  }, [someChecked, allChecked])
 
   function toggleAll() {
     const next = !allChecked
@@ -67,13 +79,7 @@ function CategorySection({
   return (
     <div>
       <div style={{ display: 'flex', alignItems: 'center', width: '100%', padding: '10px 16px', gap: 10, boxSizing: 'border-box', userSelect: 'none' }}>
-        <input
-          ref={checkboxRef}
-          type="checkbox"
-          checked={allChecked}
-          onChange={toggleAll}
-          style={{ width: 12, height: 12, flexShrink: 0, cursor: 'pointer', accentColor: 'white' }}
-        />
+        <Checkbox checked={allChecked} indeterminate={someChecked && !allChecked} onChange={toggleAll} />
         <span
           onClick={() => setOpen((o) => !o)}
           style={{ flex: 1, fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#2d2a26', paddingLeft: 4, cursor: 'pointer' }}
@@ -127,8 +133,7 @@ function SubItem({ subtype, checked, onChange, subtypeMarkers, onMarkerClick }: 
         onMouseLeave={() => setHovered(false)}
         style={{ display: 'flex', alignItems: 'center', gap: 9, padding: '5px 16px 5px 36px', background: hovered ? 'rgba(0,0,0,0.025)' : 'transparent', transition: 'background 0.12s' }}
       >
-        <input type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)}
-          style={{ width: 12, height: 12, flexShrink: 0, accentColor: 'white', cursor: 'pointer' }} />
+        <Checkbox checked={checked} onChange={() => onChange(!checked)} />
         <span
           style={{ fontSize: 12, fontWeight: 300, color: '#6b6560', letterSpacing: '0.01em', flex: 1, cursor: hasMarkers ? 'pointer' : 'default' }}
           onClick={hasMarkers ? () => setOpen((o) => !o) : undefined}
@@ -165,18 +170,6 @@ export default function FilterSidebar({ filters, onChange, colors, onColorChange
 
   return (
     <>
-      {/* Backdrop */}
-      <div
-        onClick={onClose}
-        style={{
-          display: isOpen ? 'block' : 'none',
-          position: 'absolute',
-          inset: 0,
-          background: 'rgba(0,0,0,0.25)',
-          zIndex: 999,
-        }}
-      />
-
       {/* Drawer panel */}
       <div style={{
         position: 'absolute',
