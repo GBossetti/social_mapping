@@ -9,6 +9,8 @@ interface FilterSidebarProps {
   onColorChange: (type: MarkerType, color: string) => void
   markers: MapMarker[]
   onMarkerFocus: (marker: MapMarker) => void
+  isOpen: boolean
+  onToggle: () => void
 }
 
 interface Category {
@@ -164,7 +166,7 @@ function SubItem({ subtype, checked, onChange, subtypeMarkers, onMarkerClick }: 
   )
 }
 
-export default function FilterSidebar({ filters, onChange, colors, onColorChange, markers, onMarkerFocus }: FilterSidebarProps) {
+export default function FilterSidebar({ filters, onChange, colors, onColorChange, markers, onMarkerFocus, isOpen, onToggle }: FilterSidebarProps) {
   const { t, i18n } = useTranslation()
   const [listOpen, setListOpen] = useState(true)
 
@@ -174,63 +176,78 @@ export default function FilterSidebar({ filters, onChange, colors, onColorChange
   }
 
   return (
-    <div style={{ width: 220, height: '100%', background: '#efece6', borderRight: '1px solid rgba(0,0,0,0.07)', display: 'flex', flexDirection: 'column', overflow: 'hidden', zIndex: 1000, flexShrink: 0 }}>
+    <div style={{ width: isOpen ? 220 : 36, height: '100%', background: '#efece6', borderRight: '1px solid rgba(0,0,0,0.07)', display: 'flex', flexDirection: 'column', overflow: 'hidden', zIndex: 1000, flexShrink: 0, transition: 'width 0.25s ease', position: 'relative' }}>
 
-      {/* Header */}
-      <div style={{ padding: '22px 16px 16px', borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
-        <button onClick={() => setListOpen((o) => !o)}
-          style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, width: '100%' }}
-        >
-          <p style={{ fontSize: 9, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.14em', color: '#a09990', flex: 1, textAlign: 'left' }}>
-            {t('sidebar.filters')}
-          </p>
-          <ChevronIcon open={listOpen} />
-        </button>
-      </div>
+      {/* Toggle button */}
+      <button
+        onClick={onToggle}
+        title={isOpen ? t('sidebar.collapse') : t('sidebar.expand')}
+        style={{ position: 'absolute', top: 22, right: isOpen ? 12 : '50%', transform: isOpen ? 'none' : 'translateX(50%)', background: 'none', border: 'none', cursor: 'pointer', padding: 4, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1, transition: 'right 0.25s ease, transform 0.25s ease' }}
+      >
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ transform: isOpen ? 'rotate(0deg)' : 'rotate(180deg)', transition: 'transform 0.25s ease' }}>
+          <path d="M9 2L4 7l5 5" stroke="#a09990" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
 
-      {/* Category filters */}
-      <div style={{ flex: 1, maxHeight: listOpen ? '100%' : 0, transition: 'max-height 0.25s ease', overflow: 'hidden' }}>
-        <div style={{ paddingTop: 10, paddingBottom: 20 }}>
-          {CATEGORIES.map((cat) => (
-            <CategorySection
-              key={cat.type}
-              category={cat}
-              filters={filters}
-              onChange={onChange}
-              color={colors[cat.type]}
-              onColorChange={onColorChange}
-              markers={markers}
-              onMarkerClick={onMarkerFocus}
-            />
+      {/* Inner content — fades out when collapsed */}
+      <div style={{ opacity: isOpen ? 1 : 0, transition: 'opacity 0.2s ease', display: 'flex', flexDirection: 'column', flex: 1, overflow: 'hidden', pointerEvents: isOpen ? 'auto' : 'none' }}>
+
+        {/* Header */}
+        <div style={{ padding: '22px 16px 16px', borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
+          <button onClick={() => setListOpen((o) => !o)}
+            style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, width: '100%', paddingRight: 20 }}
+          >
+            <p style={{ fontSize: 9, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.14em', color: '#a09990', flex: 1, textAlign: 'left' }}>
+              {t('sidebar.filters')}
+            </p>
+            <ChevronIcon open={listOpen} />
+          </button>
+        </div>
+
+        {/* Category filters */}
+        <div style={{ flex: 1, maxHeight: listOpen ? '100%' : 0, transition: 'max-height 0.25s ease', overflow: 'hidden' }}>
+          <div style={{ paddingTop: 10, paddingBottom: 20 }}>
+            {CATEGORIES.map((cat) => (
+              <CategorySection
+                key={cat.type}
+                category={cat}
+                filters={filters}
+                onChange={onChange}
+                color={colors[cat.type]}
+                onColorChange={onColorChange}
+                markers={markers}
+                onMarkerClick={onMarkerFocus}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Language switcher */}
+        <div style={{ padding: '12px 16px', borderTop: '1px solid rgba(0,0,0,0.06)', display: 'flex', gap: 10, justifyContent: 'center' }}>
+          {LANGUAGES.map((lang) => (
+            <button
+              key={lang.code}
+              onClick={() => switchLang(lang.code)}
+              style={{
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                fontSize: 10,
+                fontFamily: "'Outfit', sans-serif",
+                fontWeight: i18n.language === lang.code ? 600 : 400,
+                color: i18n.language === lang.code ? '#2d2a26' : '#a09990',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                padding: '2px 4px',
+                transition: 'color 0.15s',
+              }}
+            >
+              {lang.label}
+            </button>
           ))}
         </div>
-      </div>
 
-      {/* Language switcher */}
-      <div style={{ padding: '12px 16px', borderTop: '1px solid rgba(0,0,0,0.06)', display: 'flex', gap: 10, justifyContent: 'center' }}>
-        {LANGUAGES.map((lang) => (
-          <button
-            key={lang.code}
-            onClick={() => switchLang(lang.code)}
-            style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              fontSize: 10,
-              fontFamily: "'Outfit', sans-serif",
-              fontWeight: i18n.language === lang.code ? 600 : 400,
-              color: i18n.language === lang.code ? '#2d2a26' : '#a09990',
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              padding: '2px 4px',
-              transition: 'color 0.15s',
-            }}
-          >
-            {lang.label}
-          </button>
-        ))}
       </div>
-
     </div>
   )
 }

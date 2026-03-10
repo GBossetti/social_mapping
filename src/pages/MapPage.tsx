@@ -29,6 +29,7 @@ export default function MapPage() {
   const [userMarkers, setUserMarkers] = useState<MapMarker[]>([])
   const [pendingLatLng, setPendingLatLng] = useState<{ lat: number; lng: number } | null>(null)
   const [focusedMarker, setFocusedMarker] = useState<MapMarker | null>(null)
+  const [sidebarOpen, setSidebarOpen] = useState(true)
 
   function handleChange(subtype: MarkerSubtype, value: boolean) {
     setFilters((prev) => ({ ...prev, [subtype]: value }))
@@ -69,6 +70,8 @@ export default function MapPage() {
         onColorChange={handleColorChange}
         markers={allMarkers}
         onMarkerFocus={(m) => setFocusedMarker(m)}
+        isOpen={sidebarOpen}
+        onToggle={() => setSidebarOpen(o => !o)}
       />
 
       <div style={{ flex: 1, position: 'relative' }}>
