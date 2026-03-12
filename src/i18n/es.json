@@ -22,7 +22,11 @@
     "battery": "Energía / Carga",
     "school": "Escuelas",
     "hospital": "Hospitales",
+    "pharmacy": "Farmacias",
     "shelter": "Refugios",
+    "fire_station": "Estaciones de Bomberos",
+    "police": "Comisarías",
+    "community_center": "Centros Comunitarios",
     "adults": "Adultos",
     "children": "Niños"
   },
@@ -40,7 +44,18 @@
     "descriptionLabel": "Descripción",
     "descriptionPlaceholder": "Detallá la situación o recurso disponible...",
     "cancel": "Cancelar",
-    "submit": "Agregar al mapa"
+    "submit": "Agregar al mapa",
+    "institutionDetails": "Datos de la institución",
+    "addressLabel": "Dirección",
+    "addressPlaceholder": "Ej.: Av. Corrientes 1234",
+    "phoneLabel": "Teléfono",
+    "phonePlaceholder": "+54 11 0000 0000",
+    "phoneError": "Número de teléfono inválido",
+    "hoursLabel": "Horarios",
+    "hoursPlaceholder": "Ej.: Lun–Vie 9:00–17:00",
+    "websiteLabel": "Sitio web",
+    "websitePlaceholder": "https://",
+    "websiteError": "Ingresá una URL válida (https://...)"
   },
   "markerType": {
     "resource": "Recurso",

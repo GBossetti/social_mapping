@@ -21,7 +21,7 @@ interface Category {
 
 const CATEGORIES: Category[] = [
   { type: 'resource', items: ['water', 'food', 'clothes', 'medicine', 'battery'] },
-  { type: 'institution', items: ['school', 'hospital', 'shelter'], expandable: true },
+  { type: 'institution', items: ['school', 'hospital', 'pharmacy', 'shelter', 'fire_station', 'police', 'community_center'], expandable: true },
   { type: 'situation', items: ['adults', 'children'], expandable: true },
 ]
 

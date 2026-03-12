@@ -22,7 +22,11 @@
     "battery": "Energia / Càrrega",
     "school": "Escoles",
     "hospital": "Hospitals",
+    "pharmacy": "Farmàcies",
     "shelter": "Refugis",
+    "fire_station": "Parcs de Bombers",
+    "police": "Comissaries",
+    "community_center": "Centres Cívics",
     "adults": "Adults",
     "children": "Infants"
   },
@@ -40,7 +44,18 @@
     "descriptionLabel": "Descripció",
     "descriptionPlaceholder": "Descriu la situació o el recurs disponible...",
     "cancel": "Cancel·lar",
-    "submit": "Afegir al mapa"
+    "submit": "Afegir al mapa",
+    "institutionDetails": "Dades de la institució",
+    "addressLabel": "Adreça",
+    "addressPlaceholder": "Ex.: Carrer Major, 12",
+    "phoneLabel": "Telèfon",
+    "phonePlaceholder": "+34 93 000 00 00",
+    "phoneError": "Número de telèfon no vàlid",
+    "hoursLabel": "Horaris",
+    "hoursPlaceholder": "Ex.: Dl–Dv 9:00–17:00",
+    "websiteLabel": "Lloc web",
+    "websitePlaceholder": "https://",
+    "websiteError": "Introdueix una URL vàlida (https://...)"
   },
   "markerType": {
     "resource": "Recurs",

@@ -22,7 +22,11 @@
     "battery": "Energy / Charge",
     "school": "Schools",
     "hospital": "Hospitals",
+    "pharmacy": "Pharmacies",
     "shelter": "Shelters",
+    "fire_station": "Fire Stations",
+    "police": "Police Stations",
+    "community_center": "Community Centers",
     "adults": "Adults",
     "children": "Children"
   },
@@ -40,7 +44,18 @@
     "descriptionLabel": "Description",
     "descriptionPlaceholder": "Describe the situation or available resource...",
     "cancel": "Cancel",
-    "submit": "Add to map"
+    "submit": "Add to map",
+    "institutionDetails": "Institution details",
+    "addressLabel": "Address",
+    "addressPlaceholder": "E.g.: 123 Main St",
+    "phoneLabel": "Phone",
+    "phonePlaceholder": "+1 555 000 000",
+    "phoneError": "Invalid phone number",
+    "hoursLabel": "Opening hours",
+    "hoursPlaceholder": "E.g.: Mon–Fri 9:00–17:00",
+    "websiteLabel": "Website",
+    "websitePlaceholder": "https://",
+    "websiteError": "Enter a valid URL (https://...)"
   },
   "markerType": {
     "resource": "Resource",

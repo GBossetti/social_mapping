@@ -9,7 +9,7 @@ const staticMarkers = rawMarkers as MapMarker[]
 
 const ALL_SUBTYPES: MarkerSubtype[] = [
   'water', 'food', 'clothes', 'medicine', 'battery',
-  'school', 'hospital', 'shelter',
+  'school', 'hospital', 'shelter', 'pharmacy', 'fire_station', 'police', 'community_center',
   'adults', 'children',
 ]
 
@@ -43,7 +43,16 @@ export default function MapPage() {
     setPendingLatLng({ lat, lng })
   }
 
-  function handleModalConfirm(data: { type: MarkerType; subtype: MarkerSubtype; name: string; description: string }) {
+  function handleModalConfirm(data: {
+    type: MarkerType
+    subtype: MarkerSubtype
+    name: string
+    description: string
+    address?: string
+    phone?: string
+    hours?: string
+    website?: string
+  }) {
     if (!pendingLatLng) return
     const newMarker: MapMarker = {
       id: `user-${Date.now()}`,
@@ -53,6 +62,10 @@ export default function MapPage() {
       description: data.description,
       lat: pendingLatLng.lat,
       lng: pendingLatLng.lng,
+      address: data.address,
+      phone: data.phone,
+      hours: data.hours,
+      website: data.website,
     }
     setUserMarkers((prev) => [...prev, newMarker])
     setPendingLatLng(null)
